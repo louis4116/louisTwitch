@@ -1,0 +1,17 @@
+.twitch-right-bottom{
+    font-size: 18px;
+    font-weight: 600;
+    color: white;
+    overflow-y: scroll;
+    header{
+        margin-bottom: 10px;
+        padding-left:5px ;
+    }
+}
+
+.twitch-right-bottom-content{
+    display: flex;
+    flex-wrap: wrap;
+    min-width: 100%;
+}
+

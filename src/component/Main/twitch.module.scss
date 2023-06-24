@@ -1,0 +1,14 @@
+.twitch{
+    display: flex;
+    flex-direction: column;
+    position: relative;
+    background-color: #0e0e10;
+    height: 100vh;
+}
+.twitch-bottom{
+    display: flex;
+    flex-direction: row;
+    flex-wrap: nowrap;
+    height:calc(100% - 50px);
+}
+

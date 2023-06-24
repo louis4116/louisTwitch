@@ -1,0 +1,53 @@
+    .twitch-right-p-first{
+        display: flex;
+        flex-direction: column;
+        height: 100%;
+        cursor: pointer;
+        .twitch-right-p-all{
+            display: flex;
+            flex-direction: column;
+            color: rgb(191,148,255) !important;
+            flex-grow: 1;
+           
+            nav{
+                padding:0 10px ;
+                font-size: 18px;
+                font-weight: 600;
+            }
+        }
+        
+        .twitch-right-p-all-top{
+            flex: 1;
+            display: flex;
+            align-items: center;
+        }
+        .twitch-right-p-all-in-bottom{
+            height: 2px;
+            width: 100%;
+            background-color: rgb(191,148,255);
+             animation: move 0.25s ease-in-out;
+        }  
+    }
+    .twitch-right-p-all-none{
+        display: flex;
+        flex-direction: column;
+        color: white !important;
+        flex-grow: 1;
+        nav{
+            padding:0 10px ;
+            font-size: 18px;
+            font-weight: 600;
+        }
+        
+}
+
+@keyframes move {
+    0%{
+        opacity: 0;
+      
+    }
+    100%{
+        opacity: 1;
+       
+    }
+}

@@ -1,0 +1,40 @@
+.twitch-right-bottom-second{
+    display: flex;
+    flex-direction: row;
+    text-align: center;
+    .twitch-right-bottom-second-border{
+        width:100%;   
+        position: relative;
+        flex: 1;
+        div{
+            position: absolute;
+            border: 1px solid rgb(83,83,95,0.48) !important;
+            width: 100%;
+            top: 50%;
+        }
+    }
+    .twitch-right-bottom-second-more{
+        display: flex;
+        flex-direction: row;
+        align-items: center;
+        color: rgb(191,148,255);
+        font-size: 18px;
+        padding: 0 10px;
+        border-radius: 5px;
+        border: 1px ;
+        cursor: pointer;
+       p{
+        display: flex;
+        padding: 10px 5px;
+        border-radius: 10px;
+        align-items: center;
+        justify-content: center;
+       }
+    }
+}
+.twitch-right-bottom-second-more:hover{
+    
+        background-color: rgba(83,83,95,0.48);
+        color: white;
+    
+}

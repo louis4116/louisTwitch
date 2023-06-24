@@ -1,0 +1,113 @@
+.twitchnavbar{
+    display: flex;
+    justify-content: space-between;
+    flex-direction: row;
+    width: 100%;
+    height: 50px;
+    color: white;
+    background-color: rgb(24,24,27);
+    box-shadow: 0 1px 2px black;
+    z-index: 100;
+    position: relative;
+    -webkit-user-select:none;
+    -moz-user-select:none;
+    -o-user-select:none;
+    user-select:none;
+}
+.twitch-left{
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+   height: 100%;
+    font-size: 20px;
+    font-weight: 600;
+    line-height: 20px;
+    .twitch-left-img{
+        display:flex;
+        align-items: center;
+        justify-content: center;
+        padding: 10px;
+        img{
+            padding: 0 5px;
+        }
+    }
+    .twitch-left-follow,
+    .twitch-left-view{
+        padding: 0 20px;
+    }
+    .twitch-left-follow{
+        height: 100%;
+        display:flex;
+        align-items: center;
+        justify-content: center;
+        flex-direction: column;
+        color: rgb(191,148,255);
+    }
+    .twitch-left-follow-top{
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        justify-content: center;
+        flex: 1;
+        flex-grow: 1;
+    }
+    .twitch-left-follow-bottom{
+        width: 100%;
+        height: 2px;
+        background-color: rgb(191,148,255);
+    }
+    .twitch-left-vertical{
+        padding: 0 10px;
+        div{
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 30px;
+            width: 30px;
+        }
+    }
+}
+
+.twitch-right{
+    display: flex;
+    align-items: center;
+    flex-direction: row;
+    justify-content: flex-end;
+    div{
+        display: flex;
+        align-items: center;
+        margin: 0 2.5px;
+        padding: 0 7.5px;
+    }
+    .twitch-right-triangle{
+        display: flex;
+        flex-direction: row;
+        align-items: center;
+        padding: 0 5px;
+        margin: 0 !important;
+        background-color: rgba(83,83,95,0.48);
+        border-radius: 5px;
+        font-weight: 600;
+        div{
+            padding: 7px 5px;
+            margin: 0 !important; 
+        }
+    }
+    .twitch-right-profile{
+        padding: 0 !important;
+        margin: 0 !important; 
+        .twitch-right-profile-div{
+            width: 30px;
+            height: 30px;
+            background-color: green;
+            border-radius: 50%;
+            padding: 0 !important;
+     
+        }
+    }
+    
+}
+
+@media screen and (max-width:750px)  {
+    
+}

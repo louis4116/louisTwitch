@@ -1,0 +1,149 @@
+@mixin line{
+    position: absolute;
+    width: 4px;
+    height: 50%;
+    background: black;
+    border-radius: 5px;
+}
+.twitch-right{
+    display: flex;
+    flex-direction: column;
+    margin-left:  20px;
+    padding: 0 5px;
+    width: 100%;
+}
+
+.twitch-right-first{
+    margin-bottom:30px ;
+    h1{
+        color: white;
+        font-size: 54px;
+        margin-top: 30px;
+        margin-bottom: 20px;
+        line-height:1.5;
+    }
+   
+    
+}
+.twitch-right-navbar{
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    height: 40px;
+    animation: 1s;
+}
+.twitch-right-p-first{
+    display: flex;
+    flex-direction: column;
+    height: 100%;
+    .twitch-right-p-all{
+        display: flex;
+        flex-direction: column;
+        color: rgb(191,148,255) !important;
+        flex-grow: 1;
+        
+    }
+    .twitch-right-p-all-top{
+        flex: 1;
+        display: flex;
+        align-items: center;
+    }
+    .twitch-right-p-all-in-bottom{
+        height: 2px;
+        width: 100%;
+        background-color: rgb(191,148,255);
+        
+    }  
+}
+.twitch-right-first-in{
+    position: relative;
+    display: flex;
+    align-items: center;
+    vertical-align: middle;
+    text-align: center;
+}
+
+.twitch-right-teach-button{
+   position: relative;
+   z-index: 100;
+    border: none;
+    width:54px;
+    height:54px;
+    border-radius: 50%;
+    left:50px;
+    cursor: pointer;
+    &:hover{
+        scale:(1.1) ;
+    }
+    &:active{
+        scale:(0.95);
+    }
+}
+.twitch-right-teach-pause{
+    width: 100%;
+    height: 100%;
+    cursor: pointer;
+    position: absolute;
+}
+.play1{
+    top: -25%;
+    left: 20%;
+    @include line();
+   
+}
+.play2{
+
+    left:20%;
+    transform: rotate(-55deg) translateX(22px) translateY(-4px);
+    @include line();
+    animation: ShowPlay2 0.3s;
+}
+.play3{
+    left: 20%;
+    transform: rotate(55deg) translateX(-0.5px) translateY(-11.75px);
+    @include line();
+    animation: ShowPlay3 0.3s;
+}
+.twitch-right-teach-play{
+    width: 100%;
+    height: 100%;
+    cursor: pointer;
+    position: absolute;
+   
+}
+.pause1{
+   
+    top: -25%;
+    left: 20%;
+    @include line();
+}
+.pause2{
+    top: -25%;
+    left: 50%;
+    @include line();
+    animation: ShowPause2 0.3s;
+}
+@keyframes ShowPlay2 {
+    from{
+        transform: rotate(-55deg)  translateX(22px)translateY(-128px);
+    }
+    to{
+        transform: rotate(-55deg)  translateX(22px) translateY(-4px);
+    }
+}
+@keyframes ShowPlay3 {
+    from{
+        transform: rotate(55deg) translateX(-0.5px) translateY(-128px)
+    }
+    to{
+        transform: rotate(55deg) translateX(-0.5px) translateY(-11.75px);
+    }
+}
+@keyframes ShowPause2 {
+    from{
+        top: 75%;
+    }
+    to{
+        top: -25%;
+    }
+}

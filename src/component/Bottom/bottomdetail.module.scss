@@ -1,0 +1,70 @@
+
+    
+    .twitch-right-bottom-content-else{
+        flex:1 0 auto;
+        width: 30rem;
+        max-width: 20%;
+        padding:0 5px; 
+        margin-bottom: 20px;
+        position: relative;
+    }
+.twitch-right-bottom-content-else-in{
+    display: flex;
+    flex-direction: row;
+    flex-wrap: nowrap;
+    margin-top: 10px;
+   
+}
+.twitch-right-bottom-content-else-in-detail{
+        
+    margin-left: 10px;
+    overflow:hidden;
+    white-space: nowrap;
+    text-overflow: ellipsis;
+    margin-top: 10px;
+}
+.twitch-right-bottom-content-else-in-detail-title{
+    font-size: 14px; 
+    color: white; 
+    line-height: 1.2;
+    overflow:hidden;
+    white-space: nowrap;
+    text-overflow: ellipsis;
+}
+.twitch-right-bottom-content-else-in-detail-name,
+.twitch-right-bottom-content-else-in-detail-game,
+.twitch-right-bottom-content-else-in-detail-tag{
+    font-size: 12px;
+    color:rgb(173,173,184);
+    line-height: 1.5;
+    
+}
+.twitch-right-bottom-content-else-in-detail-tag{
+    width: 244px;
+}
+
+
+@media screen and (max-width:1600px) {
+    .twitch-right-bottom-content-else{
+        width: 25rem;
+        max-width: 25%;      
+    }
+}
+@media screen and (max-width:1300px) {
+    .twitch-right-bottom-content-else{
+        width: 30rem;
+        max-width: 30%;      
+    }
+}
+@media screen and (max-width:1100px) {
+    .twitch-right-bottom-content-else{
+        width: 40rem;
+        max-width: 50%;      
+    }
+}
+@media screen and (max-width:730px) {
+    .twitch-right-bottom-content-else{
+        width: 30rem;
+        max-width: 50%;
+    }
+}
