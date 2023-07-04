@@ -1,0 +1,73 @@
+.twitch-left-offline-detail-img{
+    width: 30px;
+    height: 30px;
+    border-radius: 50%;
+    position: relative;
+   filter: grayscale(1);
+}
+
+.twitch-left-offline-detail-display{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    color: white;
+    width: 100%;
+    height: 100%;
+    .twitch-left-offline-detail-display-center{
+        margin-left: 10px;
+        width: 100%;
+        .twitch-left-offline-detail-display-name{
+            font-size: 14px;
+            color:rgb(222, 222, 227);     
+    } 
+    } 
+}
+.twitch-left-offline-detail-display-hover{
+    position: absolute;
+    background-color: rgb(31,31,35);
+    color:white;
+    max-width: 200px;
+    height: 40px;
+     left: 260px;
+     border-radius: 10px;
+     font-size: 12px;
+     padding: 7px;
+     z-index: 100;
+     overflow:hidden;
+     white-space: nowrap;
+     text-overflow: ellipsis;
+   }
+
+.twitch-left-offline-detail{
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 100%;
+}
+.twitch-left-offline-detail-display-delete{
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    height: 100%;
+    margin-right: 5px;
+    margin-left: 5px;     
+}    
+    
+.twitch-left-offline-detail-display-delete-false{
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background-color: rgba(83,83,95,.38);
+    height: 100%;
+    border-radius: 5px;
+    cursor: pointer;
+}
+.twitch-left-offline-detail-display-delete-true{
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background-color: rgb(219, 121, 121);
+    height: 100%;
+    border-radius: 5px;
+    cursor: pointer;
+} 

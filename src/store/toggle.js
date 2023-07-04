@@ -5,6 +5,7 @@ const toggleSlice = createSlice({
   initialState: {
     left: false,
     teach: false,
+    deleteId: { userId: "", display: false },
   },
   reducers: {
     toggleLeft: (state, action) => {
@@ -12,6 +13,9 @@ const toggleSlice = createSlice({
     },
     toggleTeach: (state, action) => {
       state.teach = action.payload;
+    },
+    toggleDeleteId: (state, action) => {
+      state.deleteId.display = !state.deleteId.display;
     },
   },
 });

@@ -28,10 +28,21 @@ export const twitchApi = createApi({
         params: { first: 100, sort: "viewers", language: lang },
       }),
     }),
-    //取得特定頻道的資訊
-    getUser: builder.query({
-      query: ({ accessToken, user }) => ({
-        url: `https://api.twitch.tv/helix/users?id=${user}`,
+    //取得特定頻道的實況
+    getUserStream: builder.query({
+      query: ({ accessToken, userId }) => ({
+        url: `https://api.twitch.tv/helix/streams`,
+        headers: {
+          "Client-ID": "vb3u74oyy43bu5ef1q8kmqna1n1xxi",
+          Authorization: `Bearer ${accessToken}`,
+        },
+        params: { user_id: `${userId}`, type: "all" },
+      }),
+    }),
+    //取得特定頻道的個人資訊
+    getUserData: builder.query({
+      query: ({ accessToken, userId }) => ({
+        url: `https://api.twitch.tv/helix/users?id=${userId}`,
         headers: {
           "Client-ID": "vb3u74oyy43bu5ef1q8kmqna1n1xxi",
           Authorization: `Bearer ${accessToken}`,
@@ -41,5 +52,9 @@ export const twitchApi = createApi({
   }),
 });
 
-export const { useGetTokenMutation, useGetDataQuery, useGetUserQuery } =
-  twitchApi;
+export const {
+  useGetTokenMutation,
+  useGetDataQuery,
+  useGetUserStreamQuery,
+  useGetUserDataQuery,
+} = twitchApi;

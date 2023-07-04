@@ -1,115 +1,19 @@
-.twitch-left-detail{
+@mixin basic{
     display: flex;
     align-items: center;
-    padding: 5px 10px;
-    width: 100%;
-    cursor: pointer;
-    
 }
-.twitch-left-detail-img{
-    width: 30px;
-    height: 30px;
-    border-radius: 50%;
-    position: relative;
-}
-.twitch-left-detail-hover{
-    position: absolute;
-    background-color: rgb(31,31,35);
-    max-width: 275px;
-    height: 70px;
-     left: 60px;
-     border-radius: 10px;
-     font-size: 12px;
-     padding: 7px;
-     z-index: 100;
-    .twitch-left-detail-none{
-        display: none;
-    }    
-    .twitch-left-detail-hover-name{
-        display: flex;
-        color: rgb(191,148,255);
-        padding-bottom: 4px;
-        
-    }
-    .twitch-left-detail-hover-title{
-        color: white;
-        overflow:hidden;
-        white-space: nowrap;
-        text-overflow: ellipsis;
-       
-    }
-    .twitch-left-detail-hover-live{
-        display: flex;
-        align-items: center;
-        padding-top: 3px;
-        .twitch-left-detail-hover-live-point{
-            width: 6px;
-            height: 6px;
-            border-radius: 50%;
-            background-color: red;
-        }
-        .twitch-left-detail-hover-live-des{
-            color: gray;
-            padding-left: 5px;
-        }
-    }
+.twitch-left-detail{
+    @include basic;
+    margin: 5px 10px;
 }
 .twitch-left-detail-display{
-    display: flex;
-    justify-content: center;
-    color: white;
+    @include basic;
     width: 100%;
-    .twitch-left-detail-display-center{
-        margin-left: 10px;
-        width: 100%;
-        .twitch-left-detail-display-name{
-            font-size: 14px;
-            color:rgb(222, 222, 227);
-       
-    }
-    .twitch-left-detail-display-game{
-        font-size: 11px;
-        color: rgb(173,173,184);
-    }
-    }
-    .twitch-left-detail-display-right{
-        display: flex;
-        align-items: center;
-        margin-left: 5px;
-      .twitch-left-detail-display-right-container{
-        display:flex;
-        align-items: center;
-        .twitch-left-detail-display-red-spot{
-            display: block ;
-            width: 8px;
-            height: 8px;
-            border-radius: 50%;
-            background-color: red;
-        } 
-        
-       
-        .twitch-left-detail-display-viewer{
-            margin-left: 5px;
-            font-size: 13px;
-            color: rgb(222, 222, 227);
-        }
-      }
-            
-    }
-  
+    margin: 5px 10px 5px 0px;
+    padding-left: 5px;
 }
-.twitch-left-detail-display-hover{
-    position: absolute;
-    background-color: rgb(31,31,35);
-    color:white;
-    max-width: 200px;
-    height: 40px;
-     left: 260px;
-     border-radius: 10px;
-     font-size: 12px;
-     padding: 7px;
-     z-index: 100;
-     overflow:hidden;
-     white-space: nowrap;
-     text-overflow: ellipsis;
-   }
+.twitch-left-detail-display-delete{
+ 
+    width: 100%;
+    background-color: red;
+}

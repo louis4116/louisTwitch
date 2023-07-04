@@ -1,33 +1,28 @@
-import React, { useState, useEffect, useRef, useCallback } from "react";
+import React, { useState, useEffect, useRef } from "react";
 import { FiArrowRight, FiArrowLeft } from "react-icons/fi";
 import { useDrop } from "react-dnd";
 import { useSelector, useDispatch } from "react-redux";
 import { throttle } from "lodash";
-import { useGetUserQuery } from "../../api/TwitchAPI";
 import { toggleActions } from "../../store/toggle";
 import { twitchDataActions } from "../../store/twitchData";
+import { storeIdActions } from "../../store/token";
 import { ItemTypes } from "../support/ItemTypes";
 import TwitchLeftDetail from "./TwitchLeftDetail";
 import classes from "./twitchleft.module.scss";
 const TwitchLeft = () => {
-  const [user, setUser] = useState([]);
   const [scrollY, setScrollY] = useState(0);
-  const [userId, setUserId] = useState("");
   const [windowWidth, setWindowWidth] = useState(window.innerWidth);
+  const [renderId, setRenderId] = useState([]);
   const allRef = useRef();
   const dispatch = useDispatch();
   const token = useSelector((item) => item.tokenResult?.token);
   const display = useSelector((item) => item.toggleResult?.left);
-  const twitchSmall = useSelector((item) => item?.twitchResult?.twitchSmall);
-  const { data } = useGetUserQuery(
-    { accessToken: token, user: userId?.userId }, //用已經儲存在state裡的userId去twitch API去尋找資料
-    { skip: !token || !userId }
-  );
+  const userId = useSelector((item) => item.tokenResult?.userId);
 
   //reacd dnd drop之後的function，使用throttle不讓他們短時間內重複發送requset
-  const dropAfter = throttle(({ userId, title, game, login, viewer }) => {
-    setUser((pre) => [...pre, { userId, title, game, login, viewer }]);
-    setUserId({ userId });
+  const dropAfter = throttle(({ userId, login, viewer }) => {
+    dispatch(storeIdActions.storeUserId({ userId, login, viewer }));
+    console.log("drop " + viewer);
     //刪除原本的實況頻道資料
     dispatch(twitchDataActions.removeData({ userId }));
   }, 900);
@@ -42,10 +37,7 @@ const TwitchLeft = () => {
       canDrop: !!monitor.canDrop(),
     }),
   }));
-  //將新資料儲存在store裡面
-  useEffect(() => {
-    dispatch(twitchDataActions.storeSmall(data?.data));
-  }, [dispatch, data]);
+
   //判斷視窗大小是否為920px
   useEffect(() => {
     const updateWindowDimensions = () => {
@@ -63,6 +55,12 @@ const TwitchLeft = () => {
     const scrollTop = allRef.current.scrollTop;
     setScrollY(scrollTop);
   };
+  //sort排序，有大到小，未開台的放在最後面
+  useEffect(() => {
+    let temp = [...userId];
+    temp.sort((a, b) => b.viewer - a.viewer);
+    setRenderId(temp);
+  }, [userId]);
   //展開前
   const unDisplay = windowWidth >= 920 && (
     <div
@@ -106,19 +104,17 @@ const TwitchLeft = () => {
                 : classes["twitch-left-second"]
             }
           >
-            {/* 因為API的限制，所以有些資訊是從原本被drag的component來的，然後按照index的順序放入 */}
-            {twitchSmall?.map((item, index) => {
+            {renderId?.map((item, index) => {
               return (
                 <TwitchLeftDetail
-                  key={item.id}
-                  name={item.display_name}
-                  profileImg={item?.profile_image_url}
-                  game={user[index]?.game}
-                  title={user[index]?.title}
-                  login={user[index]?.login}
+                  index={index}
+                  key={item.userId}
+                  userId={item.userId}
+                  live={item.live}
+                  token={token}
                   scrollY={scrollY}
-                  viewer={user[index]?.viewer}
                   display={display}
+                  allUserId={userId}
                 />
               );
             })}
