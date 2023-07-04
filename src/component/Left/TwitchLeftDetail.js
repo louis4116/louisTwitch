@@ -11,7 +11,7 @@ import classes from "./twitchleftdetail.module.scss";
 const TwitchLeftDetail = ({
   index,
   userId,
-  live,
+  isOver,
   token,
   scrollY,
   display,
@@ -41,7 +41,7 @@ const TwitchLeftDetail = ({
     } else {
       setTop(result);
     }
-  }, [scrollY, allUserId, live, userId]);
+  }, [scrollY, allUserId]);
 
   useEffect(() => {
     //最一開始收到的資訊是undefined，也就是沒收到，所以先return

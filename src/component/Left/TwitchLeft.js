@@ -22,7 +22,6 @@ const TwitchLeft = () => {
   //reacd dnd drop之後的function，使用throttle不讓他們短時間內重複發送requset
   const dropAfter = throttle(({ userId, login, viewer }) => {
     dispatch(storeIdActions.storeUserId({ userId, login, viewer }));
-    console.log("drop " + viewer);
     //刪除原本的實況頻道資料
     dispatch(twitchDataActions.removeData({ userId }));
   }, 900);
@@ -37,7 +36,7 @@ const TwitchLeft = () => {
       canDrop: !!monitor.canDrop(),
     }),
   }));
-
+  console.log(isOver);
   //判斷視窗大小是否為920px
   useEffect(() => {
     const updateWindowDimensions = () => {
@@ -110,11 +109,11 @@ const TwitchLeft = () => {
                   index={index}
                   key={item.userId}
                   userId={item.userId}
-                  live={item.live}
+                  isOver={isOver}
                   token={token}
                   scrollY={scrollY}
                   display={display}
-                  allUserId={userId}
+                  allUserId={renderId}
                 />
               );
             })}

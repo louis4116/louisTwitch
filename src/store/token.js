@@ -19,7 +19,6 @@ const tokenSlice = createSlice({
       if (viewer === undefined) {
         viewer = -1;
       }
-      console.log("test");
       state.userId.push({ userId, login, viewer });
       localStorage.setItem(
         "userId",
@@ -28,7 +27,6 @@ const tokenSlice = createSlice({
     },
     deleteUserId: (state, action) => {
       const { userId } = action.payload;
-      console.log("test");
       const filterItem = state.userId.filter((item) => item.userId !== userId);
       state.userId = filterItem;
       localStorage.setItem(

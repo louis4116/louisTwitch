@@ -1,4 +1,10 @@
-
+.twitch-left-live-detail{
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 100%;
+    cursor: pointer;
+}
 .twitch-left-live-detail-img{
     width: 30px;
     height: 30px;
@@ -44,12 +50,7 @@
         }
     }
 }
-.twitch-left-live-detail{
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    width: 100%;
-}
+
 .twitch-left-live-detail-display{
     display: flex;
     justify-content: center;
