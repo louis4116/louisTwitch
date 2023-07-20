@@ -1,37 +1,31 @@
 import React, { useState, useRef, useEffect } from "react";
-import { useSelector } from "react-redux";
 import { FaHandPaper, FaHandRock } from "react-icons/fa";
 import classes from "./teachthird.module.scss";
-const TeachThird = ({ toggleDisplay, count, setHandPosition, imgPosition }) => {
-  const [good, setGood] = useState(false);
+const TeachThird = ({ toggleLeft, setHandPosition, firstImgPosition }) => {
+  const [animation, setAnimation] = useState(false);
   const ref = useRef();
-  const firstImgLeft = imgPosition?.left;
-  const firstImgTop = imgPosition?.top;
-  const offsetWidth = imgPosition?.offsetWidth;
-  const offsetHeight = imgPosition?.offsetHeight;
+  const firstImgLeft = firstImgPosition?.left;
+  const offsetWidth = firstImgPosition?.offsetWidth;
+  const offsetHeight = firstImgPosition?.offsetHeight;
   useEffect(() => {
     const refPosition = ref.current;
     const topPosition = refPosition.getBoundingClientRect().top;
-    const rightPosition = refPosition.getBoundingClientRect().right;
-    const bottomPosition = refPosition.getBoundingClientRect().bottom;
     const leftPosition = refPosition.getBoundingClientRect().left;
     setHandPosition({
       topPosition,
-      rightPosition,
-      bottomPosition,
       leftPosition,
     });
-  }, [good]);
+  }, [animation]);
   return (
     <div className={classes["teach-third"]}>
       <div
         className={
-          toggleDisplay
+          toggleLeft
             ? classes["teach-third-rock-display"]
             : classes["teach-third-rock"]
         }
         style={
-          toggleDisplay
+          toggleLeft
             ? { left: `${firstImgLeft}px` }
             : { left: `${firstImgLeft}px` }
         }
@@ -39,14 +33,14 @@ const TeachThird = ({ toggleDisplay, count, setHandPosition, imgPosition }) => {
         <div
           className={classes["teach-third-rock-in"]}
           ref={ref}
-          onAnimationEnd={() => setGood(true)}
+          onAnimationEnd={() => setAnimation(true)}
         >
           <FaHandRock color="white" fontSize={80} />
         </div>
         <div
           className={classes["teach-third-live"]}
           style={
-            toggleDisplay
+            toggleLeft
               ? {
                   left: `${firstImgLeft}px`,
                   width: `${offsetWidth}px`,

@@ -6,7 +6,7 @@ import { positionActions } from "../../store/position";
 import BottomDetail from "./BottomDetail";
 import { CustomDragLayer } from "../customdraglayer/CustomDragLayer";
 import classes from "./twitchrightbottom.module.scss";
-import "./help.scss";
+import "./support.scss";
 
 const TwitchRightBottom = ({ data }) => {
   const [end, setEnd] = useState(10);
@@ -19,10 +19,6 @@ const TwitchRightBottom = ({ data }) => {
   const loadMoreFn = useCallback(() => {
     if (end.length > 100) return;
     setEnd((item) => item + 10);
-  }, []);
-  //React-dnd，用於sortable
-  const moveItem = useCallback((draggedIndex, hoverIndex) => {
-    dispatch(twitchDataActions.moveData({ draggedIndex, hoverIndex }));
   }, []);
   //取得正在實況中的頻道
   useEffect(() => {
@@ -57,7 +53,6 @@ const TwitchRightBottom = ({ data }) => {
               time={item.started_at}
               viewer={item.viewer_count}
               type={item.type}
-              moveItem={moveItem}
             />
           );
         })}

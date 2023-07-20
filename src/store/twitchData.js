@@ -5,7 +5,6 @@ const twitchDataSlice = createSlice({
   initialState: {
     twitchData: [],
     twitchSmall: [],
-    indexOf: "",
   },
   reducers: {
     storeData: (state, action) => {

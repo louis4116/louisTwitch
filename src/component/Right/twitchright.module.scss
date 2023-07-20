@@ -89,7 +89,6 @@
     top: -25%;
     left: 20%;
     @include line();
-   
 }
 .play2{
 
@@ -97,12 +96,14 @@
     transform: rotate(-55deg) translateX(22px) translateY(-4px);
     @include line();
     animation: ShowPlay2 0.3s;
+ 
 }
 .play3{
     left: 20%;
     transform: rotate(55deg) translateX(-0.5px) translateY(-11.75px);
     @include line();
     animation: ShowPlay3 0.3s;
+  
 }
 .twitch-right-teach-play{
     width: 100%;
@@ -122,6 +123,7 @@
     left: 50%;
     @include line();
     animation: ShowPause2 0.3s;
+   
 }
 @keyframes ShowPlay2 {
     from{

@@ -49,7 +49,9 @@ const TwitchLeftLive = ({ userId, stream, user, toggle, display, top }) => {
         <img
           className={classes["twitch-left-live-detail-img"]}
           src={user?.profile_image_url}
+          alt=""
         />
+
         {/* 展開後的內容 */}
         {display && (
           <div className={classes["twitch-left-live-detail-display"]}>
@@ -61,24 +63,22 @@ const TwitchLeftLive = ({ userId, stream, user, toggle, display, top }) => {
                 {stream?.game_name}
               </p>
             </div>
-            <div className={classes["twitch-left-live-detail-display-right"]}>
-              <div
-                className={
-                  classes["twitch-left-live-detail-display-right-container"]
-                }
-              >
+
+            <div
+              className={
+                classes["twitch-left-live-detail-display-right-container"]
+              }
+            >
+              <div>
                 <span
                   className={
                     classes["twitch-left-live-detail-display-red-spot"]
                   }
                 ></span>
-
-                <p
-                  className={classes["twitch-left-live-detail-display-viewer"]}
-                >
-                  {stream?.viewer_count}
-                </p>
               </div>
+              <p className={classes["twitch-left-live-detail-display-viewer"]}>
+                {stream?.viewer_count}
+              </p>
             </div>
           </div>
         )}
@@ -114,7 +114,7 @@ const TwitchLeftLive = ({ userId, stream, user, toggle, display, top }) => {
           </div>
         </div>
       )}
-      {/* 展凱後的小視窗 */}
+      {/* 展開後的小視窗 */}
       {toggle && display && (
         <div
           className={classes["twitch-left-live-detail-display-hover"]}

@@ -47,9 +47,6 @@ export const CustomDragLayer = (props) => {
             id={item.id}
             userId={item.user_id}
             login={item.login}
-            title={item.title}
-            name={item.name}
-            game={item.game}
             tags={item.tags}
             viewer={item.viewer}
             duration={item.duration}

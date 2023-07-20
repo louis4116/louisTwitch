@@ -1,18 +1,18 @@
 import React from "react";
 import { FiArrowDown } from "react-icons/fi";
 import classes from "./teachfirst.module.scss";
-const TeachFirst = ({ toggleDisplay, imgPosition }) => {
-  const firstImgLeft = imgPosition?.left;
-  const firstImgTop = imgPosition?.top;
-  const offsetWidth = imgPosition?.offsetWidth;
-  const offsetHeight = imgPosition?.offsetHeight;
+const TeachFirst = ({ toggleLeft, firstImgPosition }) => {
+  const firstImgLeft = firstImgPosition?.left;
+  const firstImgTop = firstImgPosition?.top;
+  const offsetWidth = firstImgPosition?.offsetWidth;
+  const offsetHeight = firstImgPosition?.offsetHeight;
   return (
     <div
       className={
-        toggleDisplay ? classes["teach-first-display"] : classes["teach-first"]
+        toggleLeft ? classes["teach-first-display"] : classes["teach-first"]
       }
       style={
-        toggleDisplay
+        toggleLeft
           ? {
               left: `${firstImgLeft}px`,
               top: `${firstImgTop}px`,

@@ -26,9 +26,11 @@ const BottomDetailImg = ({
 
   //計算已實況時間
   useEffect(() => {
+    //現在時間減去實況開始時間
     let nowTime = new Date().getTime();
     let oldTime = new Date(time).getTime();
     let tempMs = nowTime - oldTime;
+    //計算小時與分鐘
     let tempMin = Math.floor(tempMs / 1000 / 60);
     let hours = Math.floor(tempMin / 60);
     let mins = tempMin % 60;
@@ -39,27 +41,22 @@ const BottomDetailImg = ({
     } else {
       setDuration(hours + ":" + mins);
     }
-  }, [duration, time]);
+  }, [time]);
 
   //計算圖片在畫面上的位置
   useEffect(() => {
     const top = positionRef.current.getBoundingClientRect().top;
-    const right = positionRef.current.getBoundingClientRect().right;
-    const bottom = positionRef.current.getBoundingClientRect().bottom;
     const left = positionRef.current.getBoundingClientRect().left;
     const offsetWidth = positionRef.current?.offsetWidth;
     const offsetHeight = positionRef.current?.offsetHeight;
     dispatch(
       positionActions.storedPosition({
         top,
-        right,
-        bottom,
         left,
         offsetWidth,
         offsetHeight,
       })
     );
-    console.log("store啟動");
   }, [toggleTeach]);
   return (
     <div
@@ -100,7 +97,7 @@ const BottomDetailImg = ({
             >
               <FaRegClock size={12} color="red" />
             </div>
-            <p>{duration}</p>
+            <span>{duration}</span>
           </div>
         </div>
         <div

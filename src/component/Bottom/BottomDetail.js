@@ -1,5 +1,7 @@
 import React, { useRef, useEffect, useState } from "react";
 import { useDrag, useDrop } from "react-dnd";
+import { useDispatch } from "react-redux";
+import { twitchDataActions } from "../../store/twitchData";
 import BottomDetailTag from "./BottomDetailTag";
 import { ItemTypes } from "../support/ItemTypes";
 import { getEmptyImage } from "react-dnd-html5-backend";
@@ -16,32 +18,30 @@ const BottomDetail = ({
   time,
   viewer,
   type,
-  moveItem,
 }) => {
   const [allTag, setAlltag] = useState([]);
   const [duration, setDuration] = useState();
   const tagRef = useRef();
   const ref = useRef();
+  const dispatch = useDispatch();
   //React-dnd 抓取
-  const [, drag, preview] = useDrag(
-    () => ({
-      type: ItemTypes.DETAIL,
-      //抓取時的資料
-      item: {
-        userIndex: index,
-        userId: userId,
-        login: login,
-        title: title,
-        game: game,
-        name: name,
-        viewer: viewer,
-      },
-      collect: (monitor) => ({
-        isDragging: !!monitor.isDragging(),
-      }),
+  const [, drag, preview] = useDrag(() => ({
+    type: ItemTypes.DETAIL,
+    //抓取時的資料
+    item: {
+      userIndex: index,
+      userId: userId,
+      login: login,
+      title: title,
+      game: game,
+      name: name,
+      viewer: viewer,
+      duration: duration,
+    },
+    collect: (monitor) => ({
+      isDragging: !!monitor.isDragging(),
     }),
-    [moveItem, userId, index]
-  );
+  }));
   //React-dnd 放下的部分(用於sortable)
   const [, drop] = useDrop({
     accept: ItemTypes.DETAIL,
@@ -50,42 +50,42 @@ const BottomDetail = ({
         handlerId: monitor.getHandlerId(),
       };
     },
-    hover(item, monitor) {
+    hover(item) {
       if (!ref.current) {
         return;
       }
 
       const hoverIndex = index;
       const draggedIndex = item.userIndex;
+      //如果抓取和hover過去的元素一樣，那就會return
       if (draggedIndex === hoverIndex) {
         return;
       }
-
-      moveItem(draggedIndex, hoverIndex);
+      //如果不一樣，那就繼續進行sortable
+      dispatch(twitchDataActions.moveData({ draggedIndex, hoverIndex }));
       item.userIndex = hoverIndex;
     },
   });
   //用於React-dnd
   useEffect(() => {
     preview(getEmptyImage(), { captureDraggingState: true });
-  }, []);
+  }, [preview]);
 
-  const defaultWidth = 20;
-
+  const defaultWidth = 20; //defaultWidth是如果不包含字元，CSS原有的寬度
   useEffect(() => {
-    //決定tag標籤的放置數量，太長就會移除最後一個
+    //決定tag標籤的放置數量，太長就會移除超過畫面的tag
     const containerWidth = tagRef?.current?.offsetWidth;
     let tempArray = [];
     let tempTag = [];
     let tempCount = 0;
-    let length = 0;
+    let size = 0;
     for (let i = 0; i < tags?.length; i++) {
       tempArray = tags[i];
       tempCount = tempArray.length;
-      length += tempCount * 12 + defaultWidth;
+      size += tempCount * 12 + defaultWidth; //12是一個字的font-size，所以有多少字就乘上幾個12
       tempTag.push(tags[i]);
-      if (length > containerWidth) {
-        length -= tempCount * 12 + defaultWidth;
+      if (size > containerWidth) {
+        size -= tempCount * 12 + defaultWidth;
         tempTag.pop();
         break;
       }

@@ -1,9 +1,9 @@
 import React from "react";
 import { FaHandPaper } from "react-icons/fa";
 import classes from "./teachfourth.module.scss";
-const TeachFourth = ({ position }) => {
-  const top = position.topPosition;
-  const left = position.leftPosition;
+const TeachFourth = ({ handPosition }) => {
+  const top = handPosition.topPosition;
+  const left = handPosition.leftPosition;
 
   return (
     <div

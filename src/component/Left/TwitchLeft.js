@@ -36,7 +36,7 @@ const TwitchLeft = () => {
       canDrop: !!monitor.canDrop(),
     }),
   }));
-  console.log(isOver);
+
   //判斷視窗大小是否為920px
   useEffect(() => {
     const updateWindowDimensions = () => {
@@ -113,7 +113,7 @@ const TwitchLeft = () => {
                   token={token}
                   scrollY={scrollY}
                   display={display}
-                  allUserId={renderId}
+                  renderId={renderId}
                 />
               );
             })}

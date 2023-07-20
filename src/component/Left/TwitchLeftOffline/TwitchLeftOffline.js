@@ -49,6 +49,7 @@ const TwitchLeftOffline = ({ userId, display, user }) => {
         <img
           className={classes["twitch-left-offline-detail-img"]}
           src={user?.profile_image_url}
+          alt=""
         />
         {/* 展開後的內容 */}
         {display && (

@@ -11,11 +11,10 @@ import classes from "./twitchleftdetail.module.scss";
 const TwitchLeftDetail = ({
   index,
   userId,
-  isOver,
   token,
   scrollY,
   display,
-  allUserId,
+  renderId,
 }) => {
   const [top, setTop] = useState(0);
   const [toggle, setToggle] = useState(false);
@@ -41,10 +40,9 @@ const TwitchLeftDetail = ({
     } else {
       setTop(result);
     }
-  }, [scrollY, allUserId]);
-
+  }, [display, renderId, toggle]);
   useEffect(() => {
-    //最一開始收到的資訊是undefined，也就是沒收到，所以先return
+    //最一開始收到的資訊是undefined，所以先return
     if (userStream?.data.length === undefined) return;
     setStream(userStream?.data[0]);
     setUser(userData?.data[0]);
@@ -57,7 +55,7 @@ const TwitchLeftDetail = ({
     );
   }, [userStream, userData]);
 
-  //用有無實況資訊來判斷該出現的是哪個component
+  //用有無實況來判斷該出現的是哪個component
   const streamTrue = !stream ? (
     <TwitchLeftOffline
       display={display}

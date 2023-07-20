@@ -10,8 +10,10 @@ import classes from "./teach.module.scss";
 const Teach = () => {
   const [count, setCount] = useState(0);
   const [handPosition, setHandPosition] = useState({});
-  const imgPosition = useSelector((item) => item?.positionResult[0]);
-  const toggleDisplay = useSelector((item) => item.toggleResult?.left);
+  //第一個實況截圖位置
+  const firstImgPosition = useSelector((item) => item?.positionResult[0]);
+  //左側欄位的展開判斷
+  const toggleLeft = useSelector((item) => item.toggleResult?.left);
 
   //計數器來判斷動畫的播放階段
   const counterFn = () => {
@@ -25,21 +27,27 @@ const Teach = () => {
   return (
     <div className={classes.teach} onClick={counterFn}>
       {count === 0 && (
-        <TeachFirst toggleDisplay={toggleDisplay} imgPosition={imgPosition} />
+        <TeachFirst
+          toggleLeft={toggleLeft}
+          firstImgPosition={firstImgPosition}
+        />
       )}
       {count === 1 && (
-        <TeachSecond toggleDisplay={toggleDisplay} imgPosition={imgPosition} />
+        <TeachSecond
+          toggleLeft={toggleLeft}
+          firstImgPosition={firstImgPosition}
+        />
       )}
       {count === 2 && (
         <TeachThird
-          toggleDisplay={toggleDisplay}
+          toggleLeft={toggleLeft}
           handPosition={handPosition}
-          imgPosition={imgPosition}
+          firstImgPosition={firstImgPosition}
           setHandPosition={setHandPosition}
           count={count}
         />
       )}
-      {count === 3 && <TeachFourth position={handPosition} />}
+      {count === 3 && <TeachFourth handPosition={handPosition} />}
     </div>
   );
 };

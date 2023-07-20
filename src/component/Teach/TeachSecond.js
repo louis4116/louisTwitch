@@ -1,24 +1,24 @@
 import React, { useState } from "react";
 import { FaHandPaper, FaHandRock } from "react-icons/fa";
 import classes from "./teachsecond.module.scss";
-const TeachSecond = ({ toggleDisplay, imgPosition }) => {
+const TeachSecond = ({ toggleLeft, firstImgPosition }) => {
   const [animation, setAnimation] = useState(true);
-  const firstImgLeft = imgPosition?.left;
-  const offsetWidth = imgPosition?.offsetWidth;
-  const offsetHeight = imgPosition?.offsetHeight;
+  const firstImgLeft = firstImgPosition?.left;
+  const offsetWidth = firstImgPosition?.offsetWidth;
+  const offsetHeight = firstImgPosition?.offsetHeight;
   return (
     <div className={classes["teach-second"]}>
       {animation && (
         <div
           className={
-            toggleDisplay
+            toggleLeft
               ? classes["teach-second-handpapper-display"]
               : classes["teach-second-handpapper"]
           }
           onAnimationStart={() => setAnimation(true)}
           onAnimationEnd={() => setAnimation(false)}
           style={
-            toggleDisplay
+            toggleLeft
               ? { left: `${firstImgLeft}px`, width: `${offsetWidth}px` }
               : { left: `${firstImgLeft}px`, width: `${offsetWidth}px` }
           }
@@ -34,14 +34,14 @@ const TeachSecond = ({ toggleDisplay, imgPosition }) => {
         <div>
           <div
             className={
-              toggleDisplay
+              toggleLeft
                 ? classes["teach-second-rock-display"]
                 : classes["teach-second-rock"]
             }
             onAnimationStart={() => setAnimation(false)}
             onAnimationEnd={() => setAnimation(false)}
             style={
-              toggleDisplay
+              toggleLeft
                 ? { left: `${firstImgLeft}px` }
                 : { left: `${firstImgLeft}px` }
             }
@@ -54,7 +54,7 @@ const TeachSecond = ({ toggleDisplay, imgPosition }) => {
               <div
                 className={classes["teach-second-live"]}
                 style={
-                  toggleDisplay
+                  toggleLeft
                     ? {
                         left: `${firstImgLeft}px`,
                         width: `${offsetWidth}px`,

@@ -6,15 +6,7 @@ const positionSlice = createSlice({
   reducers: {
     storedPosition: (state, action) => {
       const item = action.payload;
-
       if (item.length === 0) return;
-      // let temp = state.push(item);
-      // if (state.length === 0) {
-      //   state = temp;
-      // } else {
-      //   state = [];
-      //   state = temp;
-      // }
       state.push(item);
     },
     cleanPosition: (state, action) => {
